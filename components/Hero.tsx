@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { ArrowDown, ArrowUpRight, Terminal } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 const phrases = [
   "Building Ideas Into Reality.",
@@ -14,9 +14,12 @@ const phrases = [
 export function Hero() {
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [typedText, setTypedText] = useState("");
+  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
     const phrase = phrases[phraseIndex];
+    if (shouldReduceMotion) return;
+
     let position = 0;
     let deleting = false;
     let timeout: ReturnType<typeof setTimeout>;
@@ -45,7 +48,7 @@ export function Hero() {
 
     timeout = setTimeout(tick, 300);
     return () => clearTimeout(timeout);
-  }, [phraseIndex]);
+  }, [phraseIndex, shouldReduceMotion]);
 
   return (
     <section id="home" className="hero-wrap">
@@ -56,7 +59,9 @@ export function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, ease: "easeOut" }}
+          transition={
+            shouldReduceMotion ? { duration: 0 } : { duration: 0.65, ease: "easeOut" }
+          }
           className="relative z-10"
         >
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-electric/20 bg-electric/[0.06] px-3 py-1.5 font-mono text-[11px] tracking-[0.18em] text-electric">
@@ -72,7 +77,7 @@ export function Hero() {
             Lifelong Learner
           </p>
           <div className="mt-8 min-h-16 font-mono text-xl font-medium leading-relaxed text-slate-200 sm:text-2xl">
-            <span>{typedText}</span>
+            <span>{shouldReduceMotion ? phrases[phraseIndex] : typedText}</span>
             <span className="typing-cursor" aria-hidden="true">
               |
             </span>
@@ -96,7 +101,11 @@ export function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 14, scale: 0.98 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.7, delay: 0.16, ease: "easeOut" }}
+          transition={
+            shouldReduceMotion
+              ? { duration: 0 }
+              : { duration: 0.7, delay: 0.16, ease: "easeOut" }
+          }
           className="terminal-float relative z-10 mx-auto w-full max-w-[500px]"
         >
           <div className="terminal-glow" aria-hidden="true" />

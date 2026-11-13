@@ -7,6 +7,7 @@ const links = [
   ["About", "#about"],
   ["Skills", "#skills"],
   ["Projects", "#projects"],
+  ["Achievements", "#achievements"],
   ["Education", "#education"],
   ["Contact", "#contact"],
 ];

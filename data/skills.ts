@@ -4,16 +4,24 @@ export type SkillIcon =
   | "terminal"
   | "globe"
   | "workflow"
-  | "brain";
+  | "brain"
+  | "palette"
+  | "camera";
 
 export interface Skill {
   name: string;
   description: string;
   icon: SkillIcon;
-  category: "Language" | "Web" | "Core";
+  category: "Language" | "Web" | "Core" | "Design" | "Creative";
 }
 
 export const skills: Skill[] = [
+  {
+    name: "C",
+    description: "Strengthening programming fundamentals with a foundational language.",
+    icon: "code",
+    category: "Language",
+  },
   {
     name: "C++",
     description: "Building a strong foundation in programming and computational thinking.",
@@ -43,6 +51,18 @@ export const skills: Skill[] = [
     description: "Bringing responsive, interactive experiences to life.",
     icon: "workflow",
     category: "Web",
+  },
+  {
+    name: "UI/UX Design",
+    description: "Exploring clear, thoughtful interfaces and user-centered design.",
+    icon: "palette",
+    category: "Design",
+  },
+  {
+    name: "Photo & Video Editing",
+    description: "Creating and refining visual content through photo and video editing.",
+    icon: "camera",
+    category: "Creative",
   },
   {
     name: "Problem solving",
