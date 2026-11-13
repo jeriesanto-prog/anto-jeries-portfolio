@@ -80,6 +80,7 @@ textarea:focus-visible {
   height: 20rem;
   border-radius: 9999px;
   filter: blur(100px);
+  animation: ambient-drift 16s ease-in-out infinite alternate;
   pointer-events: none;
 }
 
@@ -124,6 +125,15 @@ textarea:focus-visible {
   }
   50% {
     transform: translateY(-9px);
+  }
+}
+
+@keyframes ambient-drift {
+  from {
+    transform: translate3d(0, -8px, 0) scale(0.96);
+  }
+  to {
+    transform: translate3d(18px, 14px, 0) scale(1.08);
   }
 }
 
@@ -372,6 +382,43 @@ textarea:focus-visible {
   border-radius: 0.75rem;
   background: rgba(0, 240, 255, 0.06);
   color: #67e8f9;
+}
+
+.skill-card {
+  transition:
+    transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 280ms ease,
+    background 280ms ease,
+    box-shadow 280ms ease;
+}
+
+.skill-card:hover {
+  background: rgba(255, 255, 255, 0.055);
+  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.2);
+}
+
+.achievement-card {
+  transition:
+    transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 280ms ease,
+    background 280ms ease,
+    box-shadow 280ms ease;
+}
+
+.achievement-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0, 240, 255, 0.22);
+  background: rgba(255, 255, 255, 0.055);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.22);
+}
+
+.certificate-preview img {
+  transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.certificate-preview:hover img,
+.certificate-preview:focus-visible img {
+  transform: scale(1.025);
 }
 
 .form-label {

@@ -1,8 +1,10 @@
 import {
   BrainCircuit,
   Braces,
+  Camera,
   Code2,
   Globe2,
+  Palette,
   Terminal,
   Workflow,
   type LucideIcon,
@@ -16,13 +18,15 @@ const icons: Record<SkillIcon, LucideIcon> = {
   globe: Globe2,
   workflow: Workflow,
   brain: BrainCircuit,
+  palette: Palette,
+  camera: Camera,
 };
 
 export function SkillCard({ skill }: { skill: Skill }) {
   const Icon = icons[skill.icon];
 
   return (
-    <article className="glass-card group rounded-2xl p-5 transition duration-300 hover:-translate-y-1 hover:border-electric/25">
+    <article className="glass-card skill-card group rounded-2xl p-5 transition duration-300 hover:-translate-y-1 hover:border-electric/25">
       <div className="mb-5 flex items-center justify-between">
         <span className="grid h-11 w-11 place-items-center rounded-xl border border-electric/15 bg-electric/[0.07] text-electric transition group-hover:bg-electric/10">
           <Icon size={20} aria-hidden="true" />

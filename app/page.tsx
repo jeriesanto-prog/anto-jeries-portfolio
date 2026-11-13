@@ -5,6 +5,8 @@ import { Section } from "@/components/Section";
 import { SkillCard } from "@/components/SkillCard";
 import { ProjectsGrid } from "@/components/ProjectsGrid";
 import { ContactForm } from "@/components/ContactForm";
+import { AchievementCard } from "@/components/AchievementCard";
+import { certificates } from "@/data/certificates";
 import { currentlyLearning, education } from "@/data/education";
 import { skills } from "@/data/skills";
 
@@ -92,6 +94,20 @@ export default function Home() {
           description="A couple of things I’ve built while learning. The list is open-ended—more ideas are on the way."
         >
           <ProjectsGrid />
+        </Section>
+
+        <Section
+          id="achievements"
+          eyebrow="CERTIFICATES & MILESTONES"
+          title="Learning, put into practice."
+          description="Verified participation and hands-on experience from recent learning opportunities."
+          className="section-tint"
+        >
+          <div className="grid gap-5 md:grid-cols-2">
+            {certificates.map((certificate) => (
+              <AchievementCard key={certificate.title} certificate={certificate} />
+            ))}
+          </div>
         </Section>
 
         <Section
